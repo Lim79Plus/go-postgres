@@ -1,0 +1,22 @@
+version: '3'
+services:
+  # postgres
+  db:
+      image: postgres:9.6
+      container_name: postgres
+      environment:
+        POSTGRES_USER: app_user
+        POSTGRES_PASSWORD: passwd
+        POSTGRES_DB: app_db
+      ports:
+        - 5432:5432
+  # goのアプリケーション
+  app:
+    container_name: go_echo_app
+    build:
+      # コンテクスト（訳者注：内容物の意味）には Dockerfile があるディレクトリのパスや Git リポジトリの URL を指定します。
+      context: .
+      dockerfile: ./docker/golang/Dockerfile
+    ports:
+     - "1323:1323"
+    command: ./app.exe
