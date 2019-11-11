@@ -17,6 +17,8 @@ services:
       # コンテクスト（訳者注：内容物の意味）には Dockerfile があるディレクトリのパスや Git リポジトリの URL を指定します。
       context: .
       dockerfile: ./docker/golang/Dockerfile
+    environment:
+        APP_PORT: 1323
     ports:
      - "1323:1323"
     command: ./app.exe
