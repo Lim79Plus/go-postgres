@@ -8,7 +8,7 @@ import (
 
 // Specification application enviroment variables
 type Specification struct {
-	Port int
+	Port int `default:"1323"`
 }
 
 // AppEnv application environment variables
