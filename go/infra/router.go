@@ -9,11 +9,12 @@ import (
 var Router *echo.Echo
 
 func init() {
+	// set env
+	EnvSet()
+
 	router := echo.New()
 
-	router.GET("/", func(c echo.Context) error {
-		return controllers.SayHello(c)
-	})
+	router.GET("/", handler(controllers.SayHello))
 
 	Router = router
 }
