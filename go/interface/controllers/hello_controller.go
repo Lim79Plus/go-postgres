@@ -9,7 +9,15 @@ type HelloController interface {
 	Hello(c Context)
 }
 
+// Resp is respose body
+type Resp struct {
+	Msg string `json:"msg"`
+}
+
 // SayHello return hello for you
 func SayHello(c Context) error {
-	return c.String(http.StatusOK, "Hello Workd!\n")
+	m := Resp{
+		Msg: "Hello Workd!",
+	}
+	return c.JSON(http.StatusOK, m)
 }
